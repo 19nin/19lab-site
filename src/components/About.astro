@@ -1,24 +1,25 @@
 ---
-import Placeholder from './Placeholder.astro';
 ---
 
 <section id="about" class="px-6 sm:px-10 py-24 sm:py-32">
   <div class="max-w-7xl mx-auto grid sm:grid-cols-12 gap-12 sm:gap-20 items-start">
-    <div class="sm:col-span-5">
-      <Placeholder
-        from="#e0d4bf"
-        to="#9a8568"
-        aspect="4/5"
-        label="Image — Coming Soon"
-      />
+    <div class="sm:col-span-5 scroll-fade">
+      <figure class="aspect-[4/5] overflow-hidden bg-paper-warm rounded-2xl">
+        <img
+          src="/images/about-spring.jpg"
+          alt=""
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </figure>
     </div>
 
-    <div class="sm:col-span-7 sm:pt-8">
+    <div class="sm:col-span-7 sm:pt-8 scroll-fade scroll-fade-delay-1">
       <p class="font-en text-[11px] tracking-[0.3em] uppercase text-ink-muted mb-5">
         About
       </p>
       <h2 class="font-display text-3xl sm:text-4xl leading-[1.5] tracking-wide mb-8">
-        19lab について
+        <span class="font-logo">19lab</span> について
       </h2>
 
       <div class="space-y-5 text-sm sm:text-base text-ink-soft leading-loose">

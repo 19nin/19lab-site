@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 
 export interface Props {
   title?: string;
@@ -37,8 +38,36 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <meta name="twitter:description" content={description} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <ClientRouter />
   </head>
   <body class="min-h-screen flex flex-col">
     <slot />
+
+    <script>
+      function initScrollFade() {
+        const targets = document.querySelectorAll<HTMLElement>('.scroll-fade:not(.is-visible)');
+        if (!('IntersectionObserver' in window) || targets.length === 0) {
+          targets.forEach((el) => el.classList.add('is-visible'));
+          return;
+        }
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -8% 0px' },
+        );
+        targets.forEach((el) => observer.observe(el));
+      }
+
+      initScrollFade();
+      // Re-run after Astro view transition page swap
+      document.addEventListener('astro:page-load', initScrollFade);
+    </script>
   </body>
 </html>

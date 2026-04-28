@@ -22,6 +22,7 @@ export default {
         sans: ['"Zen Kaku Gothic New"', '"Noto Sans JP"', 'system-ui', 'sans-serif'],
         display: ['"Klee One"', '"Zen Kaku Gothic New"', '"Noto Sans JP"', 'serif'],
         en: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        logo: ['Futura', '"Futura PT"', 'Jost', 'system-ui', 'sans-serif'],
       },
       aspectRatio: {
         '4/5': '4 / 5',

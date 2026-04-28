@@ -5,7 +5,7 @@ import ProductCard from './ProductCard.astro';
 
 <section id="works" class="px-6 sm:px-10 py-24 sm:py-32 bg-paper">
   <div class="max-w-7xl mx-auto">
-    <header class="mb-16 sm:mb-20 max-w-3xl">
+    <header class="mb-16 sm:mb-20 max-w-3xl scroll-fade">
       <p class="font-en text-[11px] tracking-[0.3em] uppercase text-ink-muted mb-4">
         Works
       </p>
@@ -18,7 +18,16 @@ import ProductCard from './ProductCard.astro';
     </header>
 
     <div class="grid sm:grid-cols-3 gap-10 sm:gap-12">
-      {products.map((product) => <ProductCard product={product} />)}
+      {products.map((product, idx) => (
+        <div class:list={[
+          'scroll-fade',
+          idx === 0 && 'scroll-fade-delay-1',
+          idx === 1 && 'scroll-fade-delay-2',
+          idx === 2 && 'scroll-fade-delay-3',
+        ]}>
+          <ProductCard product={product} />
+        </div>
+      ))}
     </div>
   </div>
 </section>

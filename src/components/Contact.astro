@@ -2,7 +2,7 @@
 ---
 
 <section id="contact" class="px-6 sm:px-10 py-20 sm:py-24 bg-paper-warm/40 border-t border-ink/10">
-  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8 scroll-fade">
     <div>
       <p class="font-en text-[11px] tracking-[0.3em] uppercase text-ink-muted mb-3">
         Contact
@@ -17,9 +17,15 @@
 
     <a
       href="/contact"
-      class="font-en text-sm tracking-[0.3em] uppercase border border-ink px-8 py-4 hover:bg-ink hover:text-paper transition-colors self-start sm:self-auto"
+      class="group inline-flex items-center gap-3 font-en text-sm tracking-[0.3em] uppercase border border-ink px-8 py-4 hover:bg-ink hover:text-paper transition-colors duration-500 self-start sm:self-auto"
     >
-      Contact Form →
+      <span>Contact Form</span>
+      <span
+        aria-hidden="true"
+        class="inline-block transition-transform duration-500 ease-out group-hover:translate-x-1.5"
+      >
+        →
+      </span>
     </a>
   </div>
 </section>
