@@ -20,7 +20,7 @@ export default {
       },
       fontFamily: {
         sans: ['"Zen Kaku Gothic New"', '"Noto Sans JP"', 'system-ui', 'sans-serif'],
-        display: ['"Zen Kaku Gothic New"', '"Noto Sans JP"', 'system-ui', 'sans-serif'],
+        display: ['"Zen Old Mincho"', '"Noto Serif JP"', 'serif'],
         en: ['Jost', 'system-ui', 'sans-serif'],
         logo: ['Futura', '"Futura PT"', 'Jost', 'system-ui', 'sans-serif'],
       },
