@@ -1,0 +1,71 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  pageTitle: string;
+  eyebrow: string;
+  effectiveDate: string;
+}
+
+const { title, description, pageTitle, eyebrow, effectiveDate } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+
+  <main class="px-6 sm:px-10 pt-32 sm:pt-40 pb-24">
+    <div class="max-w-2xl mx-auto">
+      <p class="font-en text-[12px] tracking-[0.3em] uppercase text-ink-muted mb-5">
+        {eyebrow}
+      </p>
+      <h1 class="font-display text-3xl sm:text-4xl leading-[1.5] tracking-wide mb-4">
+        {pageTitle}
+      </h1>
+      <p class="text-xs font-en text-ink-muted tracking-wider mb-12">
+        Effective Date: {effectiveDate}
+      </p>
+
+      <article class="space-y-10 text-sm sm:text-base text-ink-soft leading-loose">
+        <slot />
+      </article>
+
+      <div class="mt-20 pt-10 border-t border-ink/15">
+        <a
+          href="/"
+          class="font-en text-sm tracking-[0.3em] uppercase border-b border-ink/40 pb-1 hover:border-ink transition-colors"
+        >
+          ← Back to Home
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style is:global>
+  .legal-section h2 {
+    font-family: 'Klee One', 'Zen Kaku Gothic New', serif;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+    color: #1a1a1a;
+    margin-bottom: 0.875rem;
+    margin-top: 0;
+  }
+  .legal-section p + p {
+    margin-top: 0.875rem;
+  }
+  .legal-section ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin-top: 0.5rem;
+  }
+  .legal-section ul li + li {
+    margin-top: 0.4rem;
+  }
+</style>

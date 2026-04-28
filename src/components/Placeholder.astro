@@ -1,0 +1,43 @@
+---
+export interface Props {
+  from: string;
+  to: string;
+  label?: string;
+  aspect?: '4/5' | '3/2' | '5/4' | 'square';
+  caption?: string;
+}
+
+const { from, to, label, aspect = '4/5', caption } = Astro.props;
+
+const aspectClass = {
+  '4/5': 'aspect-[4/5]',
+  '3/2': 'aspect-[3/2]',
+  '5/4': 'aspect-[5/4]',
+  'square': 'aspect-square',
+}[aspect];
+---
+
+<figure class={`relative w-full ${aspectClass} overflow-hidden bg-paper-warm`}>
+  <div
+    class="absolute inset-0"
+    style={`background: linear-gradient(135deg, ${from} 0%, ${to} 100%);`}
+  >
+  </div>
+
+  <div
+    class="absolute inset-0 opacity-[0.07] mix-blend-overlay"
+    style="background-image: radial-gradient(rgba(0,0,0,0.6) 1px, transparent 1.2px); background-size: 4px 4px;"
+  >
+  </div>
+
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-paper">
+    {label && (
+      <span class="font-en text-[10px] tracking-[0.4em] uppercase opacity-70">
+        {label}
+      </span>
+    )}
+    {caption && (
+      <span class="font-serif text-sm mt-3 opacity-80 italic">{caption}</span>
+    )}
+  </div>
+</figure>

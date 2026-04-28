@@ -1,0 +1,188 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<BaseLayout
+  title="お問い合わせ — 19lab"
+  description="19lab へのお問い合わせ・ご感想・ご相談はこちらからお送りください。"
+>
+  <Header />
+
+  <main class="px-6 sm:px-10 pt-32 sm:pt-40 pb-24">
+    <div class="max-w-2xl mx-auto">
+      <p class="font-en text-[12px] tracking-[0.3em] uppercase text-ink-muted mb-5">
+        Contact
+      </p>
+      <h1 class="font-display text-3xl sm:text-4xl leading-[1.5] tracking-wide mb-6">
+        お問い合わせ
+      </h1>
+      <p class="text-sm sm:text-base text-ink-soft leading-loose mb-12">
+        ご感想、ご相談、メディア掲載のご依頼など、こちらのフォームよりお送りください。
+        確認のうえ、数営業日以内にご返信いたします。
+      </p>
+
+      <form id="contactForm" novalidate class="space-y-7">
+        <input type="hidden" name="access_key" value="8f5fcc86-6b2d-42be-9196-543ff06ad68a" />
+        <input type="hidden" name="from_name" value="19lab contact form" />
+        <input type="hidden" name="subject" value="[19lab] お問い合わせ" />
+
+        <div class="hp-field" aria-hidden="true">
+          <label for="hp-website">Website</label>
+          <input type="text" id="hp-website" name="botcheck" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div>
+          <label for="c-name" class="block font-en text-[11px] tracking-[0.25em] uppercase text-ink-muted mb-2">
+            Name <span class="text-accent-earth">*</span>
+          </label>
+          <input
+            type="text"
+            id="c-name"
+            name="name"
+            required
+            autocomplete="name"
+            maxlength="80"
+            class="w-full bg-transparent border-b border-ink/30 focus:border-ink py-2 outline-none transition-colors text-base"
+          />
+        </div>
+
+        <div>
+          <label for="c-email" class="block font-en text-[11px] tracking-[0.25em] uppercase text-ink-muted mb-2">
+            Email <span class="text-accent-earth">*</span>
+          </label>
+          <input
+            type="email"
+            id="c-email"
+            name="email"
+            required
+            autocomplete="email"
+            maxlength="120"
+            class="w-full bg-transparent border-b border-ink/30 focus:border-ink py-2 outline-none transition-colors text-base"
+          />
+        </div>
+
+        <div>
+          <label for="c-topic" class="block font-en text-[11px] tracking-[0.25em] uppercase text-ink-muted mb-2">
+            Topic
+          </label>
+          <select
+            id="c-topic"
+            name="topic"
+            class="w-full bg-transparent border-b border-ink/30 focus:border-ink py-2 outline-none transition-colors text-base"
+          >
+            <option value="ご感想">ご感想</option>
+            <option value="ご相談">ご相談</option>
+            <option value="メディア掲載">メディア掲載のご依頼</option>
+            <option value="不具合報告">不具合報告</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="c-message" class="block font-en text-[11px] tracking-[0.25em] uppercase text-ink-muted mb-2">
+            Message <span class="text-accent-earth">*</span>
+          </label>
+          <textarea
+            id="c-message"
+            name="message"
+            required
+            rows="6"
+            maxlength="2000"
+            class="w-full bg-transparent border-b border-ink/30 focus:border-ink py-2 outline-none transition-colors text-base resize-none"
+          ></textarea>
+        </div>
+
+        <p id="formStatus" class="text-sm text-ink-soft min-h-[1.5rem]" role="status" aria-live="polite"></p>
+
+        <button
+          id="submitBtn"
+          type="submit"
+          class="font-en text-sm tracking-[0.3em] uppercase border border-ink px-10 py-4 hover:bg-ink hover:text-paper transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Send Message
+        </button>
+      </form>
+
+      <div id="successMessage" class="hidden">
+        <h2 class="font-display text-2xl sm:text-3xl tracking-wide mb-6">
+          ありがとうございます
+        </h2>
+        <p class="text-sm sm:text-base text-ink-soft leading-loose">
+          お問い合わせを受け付けました。
+          内容を確認のうえ、数営業日以内にご返信いたします。
+        </p>
+        <a
+          href="/"
+          class="inline-block mt-10 font-en text-sm tracking-[0.3em] uppercase border-b border-ink/40 pb-1 hover:border-ink transition-colors"
+        >
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    visibility: hidden;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement | null;
+  const statusEl = document.getElementById('formStatus');
+  const successEl = document.getElementById('successMessage');
+
+  function setStatus(message: string, kind: 'error' | 'info' = 'info') {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.style.color = kind === 'error' ? '#9c4a3a' : '';
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!submitBtn || !form) return;
+
+    const data = new FormData(form);
+    if (data.get('botcheck')) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    setStatus('');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data,
+      });
+      const json = await res.json().catch(() => ({}));
+
+      if (res.ok && json && json.success) {
+        form.style.display = 'none';
+        successEl?.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        setStatus(
+          (json && json.message) || '送信に失敗しました。時間をおいて再度お試しください。',
+          'error',
+        );
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }
+    } catch (err) {
+      setStatus('ネットワークエラーが発生しました。', 'error');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
+</script>

@@ -1,0 +1,67 @@
+---
+import Placeholder from './Placeholder.astro';
+---
+
+<section id="about" class="px-6 sm:px-10 py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto grid sm:grid-cols-12 gap-12 sm:gap-20 items-start">
+    <div class="sm:col-span-5">
+      <Placeholder
+        from="#e0d4bf"
+        to="#9a8568"
+        aspect="4/5"
+        label="Image — Coming Soon"
+      />
+    </div>
+
+    <div class="sm:col-span-7 sm:pt-8">
+      <p class="font-en text-[11px] tracking-[0.3em] uppercase text-ink-muted mb-5">
+        About
+      </p>
+      <h2 class="font-display text-3xl sm:text-4xl leading-[1.5] tracking-wide mb-8">
+        19lab について
+      </h2>
+
+      <div class="space-y-5 text-sm sm:text-base text-ink-soft leading-loose">
+        <p>
+          19lab（イチキューラボ）は、毎日のくらしに静かに寄り添う
+          モバイルアプリと Web サービスをつくる小さなスタジオです。
+        </p>
+        <p>
+          流行を追うよりも、ひとつのプロダクトをじっくりと。
+          長く使えるものを、丁寧にお届けすることを大切にしています。
+        </p>
+      </div>
+
+      <dl class="mt-12 grid grid-cols-2 gap-x-10 gap-y-6 text-sm border-t border-ink/15 pt-8">
+        <div>
+          <dt class="font-en text-[10px] tracking-[0.3em] uppercase text-ink-muted mb-2">
+            Studio
+          </dt>
+          <dd>19lab</dd>
+        </div>
+        <div>
+          <dt class="font-en text-[10px] tracking-[0.3em] uppercase text-ink-muted mb-2">
+            Founded
+          </dt>
+          <dd>2026</dd>
+        </div>
+        <div>
+          <dt class="font-en text-[10px] tracking-[0.3em] uppercase text-ink-muted mb-2">
+            Focus
+          </dt>
+          <dd>iOS / Web</dd>
+        </div>
+        <div>
+          <dt class="font-en text-[10px] tracking-[0.3em] uppercase text-ink-muted mb-2">
+            Contact
+          </dt>
+          <dd>
+            <a href="/contact" class="font-en text-sm border-b border-ink/30 hover:border-ink transition-colors">
+              Contact Form →
+            </a>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>

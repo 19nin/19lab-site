@@ -1,0 +1,31 @@
+---
+import Placeholder from './Placeholder.astro';
+---
+
+<section class="relative w-full min-h-[88vh] flex flex-col">
+  <div class="absolute inset-0 z-0">
+    <Placeholder
+      from="#ece2cf"
+      to="#b29f80"
+      aspect="3/2"
+      label="Hero Image — Coming Soon"
+    />
+    <div class="absolute inset-0 bg-paper/40"></div>
+  </div>
+
+  <div class="relative z-10 flex-1 flex items-end pb-20 sm:pb-24 pt-32 px-6 sm:px-10">
+    <div class="max-w-7xl mx-auto w-full">
+      <p class="font-en text-[11px] tracking-[0.3em] uppercase text-ink-soft mb-7 fade-in">
+        Indie Studio · Tokyo
+      </p>
+
+      <h1 class="font-display text-4xl sm:text-6xl md:text-7xl leading-[1.5] tracking-wide max-w-4xl fade-in">
+        くらしに、ちいさな灯を。
+      </h1>
+
+      <p class="mt-8 sm:mt-10 text-base sm:text-lg text-ink-soft max-w-xl leading-loose fade-in">
+        日々のための、やさしいプロダクトをつくっています。
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,54 @@
+---
+import type { Product } from '@/data/products';
+import Placeholder from './Placeholder.astro';
+
+export interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<article class="group">
+  <div class="mb-6">
+    <Placeholder
+      from={product.placeholder.from}
+      to={product.placeholder.to}
+      aspect="4/5"
+      label={product.name}
+    />
+  </div>
+
+  <p class="font-en text-[10px] tracking-[0.3em] uppercase text-ink-muted mb-3">
+    {product.number}　/　{product.year}
+  </p>
+
+  <h3 class="font-display text-2xl sm:text-3xl leading-snug tracking-wide mb-2">
+    {product.name}
+  </h3>
+  {product.nameJa && (
+    <p class="text-xs text-ink-muted tracking-wider mb-4">{product.nameJa}</p>
+  )}
+
+  <p class="text-sm text-ink-soft mb-3 leading-relaxed">
+    {product.tagline}
+  </p>
+
+  <p class="text-xs text-ink-soft leading-loose mb-5">
+    {product.description}
+  </p>
+
+  <div class="flex items-center gap-4 pt-4 border-t border-ink/15 text-[10px] font-en tracking-[0.25em] uppercase text-ink-muted">
+    <span>{product.category}</span>
+    {product.url && (
+      <a
+        href={product.url}
+        target="_blank"
+        rel="noopener"
+        class="ml-auto hover:text-ink transition-colors"
+      >
+        Visit →
+      </a>
+    )}
+  </div>
+</article>
