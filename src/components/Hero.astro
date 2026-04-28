@@ -1,17 +1,21 @@
 ---
-// To swap image for video later: replace <img> below with
-// <video src="/videos/hero.mp4" autoplay muted loop playsinline poster="/images/hero-spring.jpg" class="w-full h-full object-cover" />
 ---
 
 <section class="relative w-full min-h-[88vh] flex flex-col">
   <div class="absolute inset-0 z-0">
-    <img
-      src="/images/hero-spring.jpg"
-      alt=""
+    <video
+      src="/videos/hero-leaf.mp4"
+      poster="/images/hero-leaf.jpg"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
       class="w-full h-full object-cover"
-      loading="eager"
-      fetchpriority="high"
-    />
+    ></video>
+    <div class="absolute inset-0 bg-ink/10 mix-blend-multiply"></div>
+    <div class="absolute inset-0 bg-paper-warm/20 mix-blend-soft-light"></div>
+    <div class="absolute inset-x-0 top-0 h-40 sm:h-48 bg-gradient-to-b from-paper/70 to-transparent"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-paper via-paper/80 to-paper/20"></div>
     <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-paper to-transparent"></div>
   </div>

@@ -22,7 +22,7 @@ const { title, description, pageTitle, eyebrow, effectiveDate } = Astro.props;
       <p class="font-en text-[12px] tracking-[0.3em] uppercase text-ink-muted mb-5">
         {eyebrow}
       </p>
-      <h1 class="font-display text-3xl sm:text-4xl leading-[1.5] tracking-wide mb-4">
+      <h1 class="font-display font-medium text-3xl sm:text-4xl leading-[1.5] tracking-wide mb-4">
         {pageTitle}
       </h1>
       <p class="text-xs font-en text-ink-muted tracking-wider mb-12">
@@ -49,9 +49,10 @@ const { title, description, pageTitle, eyebrow, effectiveDate } = Astro.props;
 
 <style is:global>
   .legal-section h2 {
-    font-family: 'Klee One', 'Zen Kaku Gothic New', serif;
-    font-size: 1.25rem;
-    line-height: 1.5;
+    font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', system-ui, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.6;
     letter-spacing: 0.05em;
     color: #1a1a1a;
     margin-bottom: 0.875rem;

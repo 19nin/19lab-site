@@ -20,8 +20,8 @@ export default {
       },
       fontFamily: {
         sans: ['"Zen Kaku Gothic New"', '"Noto Sans JP"', 'system-ui', 'sans-serif'],
-        display: ['"Klee One"', '"Zen Kaku Gothic New"', '"Noto Sans JP"', 'serif'],
-        en: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        display: ['"Zen Kaku Gothic New"', '"Noto Sans JP"', 'system-ui', 'sans-serif'],
+        en: ['Jost', 'system-ui', 'sans-serif'],
         logo: ['Futura', '"Futura PT"', 'Jost', 'system-ui', 'sans-serif'],
       },
       aspectRatio: {
